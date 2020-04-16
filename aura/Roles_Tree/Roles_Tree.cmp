@@ -1,0 +1,22 @@
+<aura:component controller="RoleTreeController">
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="items" type="Object" access="PRIVATE"/>
+    <aura:attribute name="isExpanded" type="boolean" default="true"/>
+    <aura:attribute name="selectedID" type="Id" />
+    <div class="slds-grid slds-grid_vertical slds-gutters">
+        <div class="slds-col slds-align-middle slds-p-vertical_large">
+            <div class="slds-text-heading_large slds-text-align_center">Role Heirarchy - Using Lightning:tree</div>
+        </div>
+        <div class="slds-col slds-align-middle slds-p-vertical_large">
+            <div class="slds-box slds-box_small">
+            	<lightning:tree items="{! v.items }" header="Roles" onselect="{!c.handleSelect}"/>
+            </div>
+            <aura:if isTrue="{!not(empty(v.selectedID))}">
+            	<div class="slds-text-body_regular slds-p-vertical_small">Selected Role ID : {!v.selectedID}</div>
+            </aura:if>
+        </div>
+        <div class="slds-col slds-align-middle">
+            <div class="slds-text-body_regular">Project by <b><a href="https://sfdcdevelopers.com">Vinay Vernekar</a></b></div>
+        </div>
+    </div>
+</aura:component>
