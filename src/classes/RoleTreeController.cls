@@ -30,7 +30,7 @@ public class RoleTreeController {
     private static void init() {
         
         // Get role to users mapping in a map with key as role id
-        rolesMap = new Map<Id, UserRole>([select Id, Name, parentRoleId from UserRole order by parentRoleId]);
+        rolesMap = new Map<Id, UserRole>([select Id, Name, parentRoleId from UserRole where PortalType = 'None' order by Name]);
         
         // populate parent role - child roles map
         parentChildRoleMap = new Map <Id, List<UserRole>>();        
